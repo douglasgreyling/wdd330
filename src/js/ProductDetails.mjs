@@ -18,7 +18,15 @@ export default class ProductDetails {
 
   addProductToCart() {
     const cartItems = getLocalStorage("so-cart") || [];
-    cartItems.push(this.product);
+    const productInCart = cartItems.findIndex(item => item.Id === this.product.Id);
+
+    if (productInCart !== -1) {
+      cartItems[productInCart].Quantity += 1;
+      cartItems[productInCart].FinalPrice = this.product.ListPrice * cartItems[productInCart].Quantity;
+    } else {
+      cartItems.push({ ...this.product, Quantity: 1 });
+    }
+
     setLocalStorage("so-cart", cartItems);
   }
 
