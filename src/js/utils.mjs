@@ -64,3 +64,19 @@ export async function loadHeaderFooter() {
 
   renderWithTemplate(footerTemplate, footerElement);
 }
+
+export function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export function humanize(string) {
+  return string
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/([A-Z])([A-Z][a-z])/g, "$1 $2")
+    .replace(/_/g, " ")
+    .replace(/-/g, " ")
+    .toLowerCase()
+    .split(" ")
+    .map((word) => capitalizeFirstLetter(word))
+    .join(" ");
+}
