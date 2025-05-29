@@ -1,4 +1,4 @@
-import ProductData from './ProductData.mjs';
+import ExternalServices from './ExternalServices.mjs';
 import ProductList from './ProductList.mjs';
 import { getParam, loadHeaderFooter, humanize } from './utils.mjs';
 
@@ -12,7 +12,7 @@ const humanizedCategory = humanize(category);
 categoryElement.textContent =
   humanizedCategory.charAt(0).toUpperCase() + humanizedCategory.slice(1);
 
-const dataSource = new ProductData();
+const dataSource = new ExternalServices();
 
 const element = document.querySelector('.product-list');
 
